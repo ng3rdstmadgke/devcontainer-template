@@ -10,5 +10,4 @@ docker build --rm \
 docker run --rm -ti \
   --name sample-app-${HOST_USER} \
   --network $DOCKER_NETWORK \
-  devcontainer-template/app/${HOST_USER}:latest \
-  python -m http.server 8000
+  devcontainer-template/app/${HOST_USER}:latest

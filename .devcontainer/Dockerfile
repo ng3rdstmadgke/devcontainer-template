@@ -1,8 +1,10 @@
 # https://mcr.microsoft.com/en-us/product/devcontainers/base/about
 FROM mcr.microsoft.com/devcontainers/base:dev-ubuntu-24.04
 
-RUN apt-get update && \
-    apt-get install -y \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt/lists,sharing=locked \
+    apt update && \
+    apt install -y \
       sudo \
       locales \
       net-tools \
@@ -36,7 +38,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # terraform インストール
 # https://developer.hashicorp.com/terraform/install
-ENV TERRAFORM_VERSION=1.10.3
+ENV TERRAFORM_VERSION=1.13.3
 RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
 mv terraform /usr/local/bin/ && \
@@ -72,12 +74,13 @@ RUN curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases
     sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd && \
     rm argocd-linux-amd64
 
-# Poetry インストール
-RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/home/vscode/.pypoetry python3.12 - && \
-    chown -R vscode:vscode /home/vscode/.pypoetry
-ENV PATH="$PATH:/home/vscode/.pypoetry/bin"
-
 # spotinfo インストール
 RUN wget https://github.com/alexei-led/spotinfo/releases/download/1.0.7/spotinfo_linux_amd64 && \
     chmod 755 spotinfo_linux_amd64 && \
     mv spotinfo_linux_amd64 /usr/local/bin/spotinfo
+
+# uv をグローバルにインストール
+RUN curl -LsSf https://astral.sh/uv/install.sh \
+  | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh
+
+ENV UV_PROJECT_ENVIRONMENT="/workspaces/devcontainer-template/.venv"

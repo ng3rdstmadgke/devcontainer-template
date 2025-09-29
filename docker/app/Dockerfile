@@ -1,5 +1,20 @@
 FROM python:3.12.8-bookworm
 
-RUN mkdir -p /var/www/html && \
-  echo "Hello, World!" > /var/www/html/index.html
-WORKDIR /var/www/html
+# uv をグローバルにインストール
+RUN curl -LsSf https://astral.sh/uv/install.sh \
+  | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh
+
+WORKDIR /opt/app
+
+RUN mkdir -p /opt/app
+COPY app/pyproject.toml /opt/app
+
+ENV UV_PROJECT_ENVIRONMENT="/opt/.venv"
+ENV PATH="/opt/.venv/bin:$PATH"
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync
+
+COPY app /opt/app
+
+CMD ["uv", "run", "uvicorn", "main:app", "--reload", "--port", "8000", "--host", "0.0.0.0"]
