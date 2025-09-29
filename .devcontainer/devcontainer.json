@@ -96,6 +96,9 @@
         "GitHub.copilot",
         "GitHub.copilot-chat",
 
+        // Codex
+        "openai.chatgpt",
+
         // Others
         "ms-vscode.makefile-tools",
         "ms-azuretools.vscode-docker"

@@ -24,8 +24,9 @@ RUN apt-get update && \
       fzf \
       groff \
       procps \
-      default-mysql-client \
-      python3.12
+      python3.12 \
+      postgresql-client-16 \
+      redis-tools
 
 # ロケール設定
 RUN echo 'ja_JP.UTF-8 UTF-8' >> /etc/locale.gen && \
