@@ -84,3 +84,11 @@ RUN curl -LsSf https://astral.sh/uv/install.sh \
   | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh
 
 ENV UV_PROJECT_ENVIRONMENT="/workspaces/devcontainer-template/.venv"
+
+# Node.js インストール
+# https://nodesource.com/products/distributions
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && \
+    apt-get install -y nodejs && \
+    node -v
+
+RUN npm install -g @anthropic-ai/claude-code
