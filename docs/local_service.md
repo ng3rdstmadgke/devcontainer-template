@@ -1,54 +1,73 @@
-# devcontainerのテンプレート
-
-
-## アプリ起動
-
-```bash
-./bin/run-server.sh
-```
-
-http://localhost:8000 にアクセス
-
-# ツール類
-
-## postgresqlの起動
+# Postgresql
 
 ```bash
 ./bin/postgresql.sh
 ```
 
+## ログ
+
 ```bash
-# appユーザーでログイン
-PGPASSWORD=root1234 psql -U app -h ${PROJECT_NAME}-sample-postgresql -d sample -p 5432
+CONTAINER_NAME=${PROJECT_NAME}-sample-postgresql
+docker logs -f ${CONTAINER_NAME}
 ```
 
-## mysqlの起動
+## 動作確認
+
+```bash
+CONTAINER_NAME=${PROJECT_NAME}-sample-postgresql
+
+# appユーザーでログイン
+PGPASSWORD=root1234 psql -U app -h ${CONTAINER_NAME} -d sample -p 5432
+```
+
+# MySQL
 
 ```bash
 ./bin/mysql.sh
 ```
 
-```bash
-# rootユーザーでログイン
-MYSQL_PWD=root1234 mysql -u root -h ${PROJECT_NAME}-sample-mysql -P 3306 sample
+## ログ
 
-# appユーザーでログイン
-MYSQL_PWD=pass1234 mysql -u app -h ${PROJECT_NAME}-sample-mysql -P 3306 sample
+```bash
+CONTAINER_NAME=${PROJECT_NAME}-sample-mysql
+docker logs -f ${CONTAINER_NAME}
 ```
 
-## Redisの起動
+## 動作確認
+
+```bash
+CONTAINER_NAME=${PROJECT_NAME}-sample-mysql
+
+# rootユーザーでログイン
+MYSQL_PWD=root1234 mysql -u root -h ${CONTAINER_NAME} -P 3306 sample
+
+# appユーザーでログイン
+MYSQL_PWD=pass1234 mysql -u app -h ${CONTAINER_NAME} -P 3306 sample
+```
+
+# Redis
 
 ```bash
 ./bin/redis.sh
 ```
 
-ログイン
+## ログ
 
 ```bash
-redis-cli -u redis://app:pass1234@${PROJECT_NAME}-sample-redis:6379
+CONTAINER_NAME=${PROJECT_NAME}-sample-redis
+docker logs -f ${CONTAINER_NAME}
 ```
 
-Redisの操作
+## 動作確認
+
+### ログイン
+
+```bash
+CONTAINER_NAME=${PROJECT_NAME}-sample-redis
+redis-cli -u redis://app:pass1234@${CONTAINER_NAME}:6379
+```
+
+### コマンド例
 
 ```bash
 # 疎通確認
@@ -112,13 +131,23 @@ sample-redis:6379> PUBLISH temp:room1 "25.5"
 
 ```
 
-## RabbitMQの起動
+# RabbitMQ
 
 ```bash
 ./bin/rabbitmq.sh
 ```
 
-管理画面へのアクセス
+## ログ
+
+```bash
+CONTAINER_NAME=${PROJECT_NAME}-sample-rabbitmq
+docker logs -f ${CONTAINER_NAME}
+```
+
+
+## 動作確認
+
+### 管理画面へのアクセス
 
 - ポートフォワーディング 
   - `devcontainer-template-sample-rabbitmq:15672`
@@ -127,12 +156,13 @@ sample-redis:6379> PUBLISH temp:room1 "25.5"
   - password: `pass1234`
 
 
-RabbitMQ管理コマンドラインツール(rabbitmqadmin)の操作
+### rabbitmqadminでの操作
 
 ```bash
+CONTAINER_NAME=${PROJECT_NAME}-sample-rabbitmq
 # キュー作成 (durable=true 永続化、再起動後も残る)
 rabbitmqadmin \
-  --host ${PROJECT_NAME}-sample-rabbitmq \
+  --host ${CONTAINER_NAME} \
   --port 15672 \
   --username app \
   --password pass1234 \
@@ -140,7 +170,7 @@ rabbitmqadmin \
 
 # メッセージ送信
 rabbitmqadmin \
-  --host ${PROJECT_NAME}-sample-rabbitmq \
+  --host ${CONTAINER_NAME} \
   --port 15672 \
   --username app \
   --password pass1234 \
@@ -148,7 +178,7 @@ rabbitmqadmin \
 
 # メッセージ一覧
 rabbitmqadmin \
-  --host ${PROJECT_NAME}-sample-rabbitmq \
+  --host ${CONTAINER_NAME} \
   --port 15672 \
   --username app \
   --password pass1234 \
@@ -156,7 +186,7 @@ rabbitmqadmin \
 
 # メッセージ取得 (--ack-mode ack_requeue_false 取得したメッセージをキューに戻さない。消費する)
 rabbitmqadmin \
-  --host ${PROJECT_NAME}-sample-rabbitmq \
+  --host ${CONTAINER_NAME} \
   --port 15672 \
   --username app \
   --password pass1234 \
@@ -164,11 +194,20 @@ rabbitmqadmin \
 ```
 
 
-## localstackの起動
+## Localstack
 
 ```bash
 ./bin/localstack.sh
 ```
+
+## ログ
+
+```bash
+CONTAINER_NAME=${PROJECT_NAME}-sample-localstack
+docker logs -f ${CONTAINER_NAME}
+```
+
+## 動作確認
 
 
 ```bash
