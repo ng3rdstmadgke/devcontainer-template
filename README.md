@@ -1,34 +1,14 @@
-
 # 目次
 
 - [ローカルサービスの起動](docs/local_service.md)
-
+- [DevOpsガイド](docs/devops_guide.md)
 
 # devcontainerのテンプレート
 
-## アプリ起動
+## サンプルアプリ起動
 
 ```bash
 ./bin/run-server.sh
 ```
 
 http://localhost:8000 にアクセス
-
-
-# GitHub CLI の ログイン
-
-```bash
-gh auth login
-# ? Where do you use GitHub? GitHub.com
-# ? What is your preferred protocol for Git operations on this host? HTTPS
-# ? Authenticate Git with your GitHub credentials? Yes
-# ? How would you like to authenticate GitHub CLI? Login with a web browser
-# 
-# ! First copy your one-time code: XXXX-XXXX
-# Press Enter to open https://github.com/login/device in your browser... 
-# ✓ Authentication complete.
-# - gh config set -h github.com git_protocol https
-# ✓ Configured git protocol
-# ! Authentication credentials saved in plain text
-# ✓ Logged in as xxxxxxxxxxxxx
-```
