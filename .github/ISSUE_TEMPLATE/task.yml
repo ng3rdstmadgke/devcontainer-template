@@ -1,0 +1,96 @@
+name: タスク管理
+description: 開発タスクやチケットを作成する
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        開発タスクを作成します。以下の情報を記入してください。
+
+  - type: textarea
+    id: overview
+    attributes:
+      label: タスクの概要
+      description: このタスクの目的と概要を説明してください
+      placeholder: 何を実施するタスクか説明してください
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: 実施内容
+      description: 具体的な実施内容をチェックリスト形式で記載してください
+      placeholder: |
+        - [ ] 〇〇を実装
+        - [ ] テストを作成
+        - [ ] ドキュメントを更新
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完了条件
+      description: このタスクが完了したと判断する基準を記載してください
+      placeholder: |
+        - 全てのテストが通る
+        - レビューが完了している
+        - ドキュメントが更新されている
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 優先度
+      description: このタスクの優先度を選択してください
+      options:
+        - 緊急 - すぐに対応が必要
+        - 高 - 早めに対応したい
+        - 中 - 通常の優先度
+        - 低 - 余裕があれば対応
+    validations:
+      required: false
+
+  - type: input
+    id: estimate
+    attributes:
+      label: 見積もり工数
+      description: このタスクの見積もり工数を記入してください
+      placeholder: 例：2時間、1日、1週間
+    validations:
+      required: false
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 依存関係
+      description: このタスクが依存している他のIssueやタスクがあれば記載してください
+      placeholder: |
+        - #123 が完了していること
+        - 外部APIの準備が完了していること
+    validations:
+      required: false
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 参考情報
+      description: 関連するドキュメント、URL、仕様書などがあれば記載してください
+      placeholder: |
+        - 設計ドキュメント: https://...
+        - 関連PR: #456
+        - 参考実装: https://...
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考
+      description: その他、このタスクに関する補足情報があれば記載してください
+      placeholder: 追加の情報やコンテキストを記載してください
+    validations:
+      required: false
