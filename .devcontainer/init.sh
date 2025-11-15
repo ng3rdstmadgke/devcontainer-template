@@ -3,7 +3,7 @@
 mkdir -p ~/.ssh
 mkdir -p ~/.aws
 mkdir -p ~/.claude
-touch ~/.claude.json
+[ ! -f ~/.claude.json ] && echo '{}' > ~/.claude.json
 mkdir -p ~/.devcontainer-template/.kube
 mkdir -p ~/.devcontainer-template/.config/helm
 
