@@ -94,3 +94,28 @@ claude mcp add \
   --scope project \
   aws-terraform -- docker run -i --rm mcp/aws-terraform
 ```
+
+
+# Claude Code GitHub Actions
+
+- https://code.claude.com/docs/en/github-actions
+- https://github.com/anthropics/claude-code-action
+
+GitHub ActionsでClaude CodeがPRレビューや開発を行ってくれる機能
+
+コマンドラインで claude codeを開き `/install-github-app` を実行
+
+GitHub の Applications に Claude が追加されます。
+
+https://github.com/settings/installations
+
+
+### 使い方
+
+IssueまたはPRのコメント内で：
+
+```
+@claude implement this feature based on the issue description
+@claude how should I implement user authentication for this endpoint?
+@claude fix the TypeError in the user dashboard component
+```
