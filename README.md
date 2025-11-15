@@ -1,12 +1,11 @@
-
 # 目次
 
 - [ローカルサービスの起動](docs/local_service.md)
-
+- [DevOpsガイド](docs/devops_guide.md)
 
 # devcontainerのテンプレート
 
-## アプリ起動
+## サンプルアプリ起動
 
 ```bash
 ./bin/run-server.sh
