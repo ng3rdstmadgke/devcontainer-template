@@ -33,6 +33,7 @@
       "source=${localEnv:HOME}/.aws/,target=/home/vscode/.aws/,type=bind,consistency=cached",
       "source=${localEnv:HOME}/.claude/,target=/home/vscode/.claude/,type=bind,consistency=cached",
       "source=${localEnv:HOME}/.claude.json,target=/home/vscode/.claude.json,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.gemini/,target=/home/vscode/.gemini/,type=bind,consistency=cached",
       "source=${localEnv:HOME}/.devcontainer-template/.kube/,target=/home/vscode/.kube/,type=bind,consistency=cached",
       "source=${localEnv:HOME}/.devcontainer-template/.config/helm/,target=/home/vscode/.config/helm/,type=bind,consistency=cached"
   ],
@@ -110,6 +111,10 @@
 
         // Claude
         "anthropic.claude-code",
+
+        // Gemini
+        "google.gemini-cli-vscode-ide-companion",
+        "google.geminicodeassist",
 
         // Others
         "ms-vscode.makefile-tools",
