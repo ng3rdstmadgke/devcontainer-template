@@ -92,6 +92,7 @@
         "jebbs.plantuml",
 
         // Terraform
+        "hashicorp.hcl",
         "hashicorp.terraform",
         "saramorillon.terraform-graph",
 

@@ -39,7 +39,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # terraform インストール
 # https://developer.hashicorp.com/terraform/install
-ENV TERRAFORM_VERSION=1.13.3
+ENV TERRAFORM_VERSION=1.14.0
 RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
 unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
 mv terraform /usr/local/bin/ && \

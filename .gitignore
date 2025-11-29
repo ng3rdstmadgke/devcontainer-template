@@ -1,3 +1,9 @@
 .venv/
 tmp/
 .claude/
+
+# terraform
+terraform/.tfplan/
+terraform/.tfstate/
+terraform/.terraform/
+terraform/envs/*/backend.hcl
