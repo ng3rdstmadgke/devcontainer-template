@@ -6,4 +6,4 @@ tmp/
 terraform/.tfplan/
 terraform/.tfstate/
 terraform/.terraform/
-terraform/envs/*/backend.hcl
+**/backend.hcl

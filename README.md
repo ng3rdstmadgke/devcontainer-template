@@ -9,7 +9,7 @@
 ## サンプルアプリ起動
 
 ```bash
-./bin/run-server.sh
+make run
 ```
 
 http://localhost:8000 にアクセス
