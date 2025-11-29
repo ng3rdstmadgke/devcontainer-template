@@ -7,7 +7,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh \
 WORKDIR /opt/app
 
 RUN mkdir -p /opt/app
-COPY app/pyproject.toml /opt/app
+COPY sample-app/pyproject.toml /opt/app
 
 ENV UV_PROJECT_ENVIRONMENT="/opt/.venv"
 ENV PATH="/opt/.venv/bin:$PATH"
@@ -15,6 +15,6 @@ ENV PATH="/opt/.venv/bin:$PATH"
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync
 
-COPY app /opt/app
+COPY sample-app /opt/app
 
 CMD ["uv", "run", "uvicorn", "main:app", "--reload", "--port", "8000", "--host", "0.0.0.0"]
