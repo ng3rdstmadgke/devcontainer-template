@@ -1,1 +1,1 @@
-stage = "prod"
+repository_name = "sample-app"

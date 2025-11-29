@@ -1,11 +1,11 @@
 variable "project_name" {
-  type = string
+  type        = string
 }
 
 variable "stage" {
-  type = string
+  type        = string
 }
 
 variable "repository_name" {
-  type = string
+  type        = string
 }

@@ -3,16 +3,16 @@ provider "aws" {
   region = "ap-northeast-1"
   default_tags {
     tags = {
-      PROJECT    = "devcontainer-template",
+      PROJECT    = var.project_name
       STAGE      = var.stage
       managed_by = "terraform"
     }
   }
 }
 
-module "sample_module" {
-  source       = "./modules/sample_module"
-  project_name = var.project_name
-  bucket_name  = "example-bucket"
-  stage        = var.stage
+module "sample_app_ecr" {
+  source           = "./modules/ecr"
+  project_name     = var.project_name
+  stage            = var.stage
+  repository_name  = var.repository_name
 }
