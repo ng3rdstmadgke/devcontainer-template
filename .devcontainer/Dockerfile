@@ -96,8 +96,12 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && \
     apt-get install -y nodejs && \
     node -v
 
-# Claude Code CLI インストール
-RUN curl -fsSL https://claude.ai/install.sh | bash
-
 # Gemini CLI インストール
+# https://github.com/google-gemini/gemini-cli
 RUN npm install -g @google/gemini-cli
+
+USER vscode
+
+# Claude Code CLI インストール
+# https://code.claude.com/docs/en/setup#standard-installation
+RUN curl -fsSL https://claude.ai/install.sh | bash
