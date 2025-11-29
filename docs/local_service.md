@@ -212,7 +212,7 @@ docker logs -f ${CONTAINER_NAME}
 
 ```bash
 export AWS_ENDPOINT_URL=http://${PROJECT_NAME}-sample-localstack:4566
-export AWS_DEFAULT_REGION=ap-northeast-1
+export AWS_REGION=ap-northeast-1
 
 # s3バケット
 aws s3 ls

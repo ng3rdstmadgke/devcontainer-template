@@ -4,7 +4,7 @@
 # デバッグコマンド: docker logs terraform-tutorial_devcontainer-localstack-1  | less
 set -ex
 
-export AWS_DEFAULT_REGION=ap-northeast-1
+export AWS_REGION=ap-northeast-1
 
 # secretsmanager: db secret
 cat <<EOF > /tmp/mysql_secret.json
@@ -43,7 +43,7 @@ awslocal sqs create-queue \
 # s3: app bucket
 awslocal s3api create-bucket \
   --bucket sample \
-  --create-bucket-configuration LocationConstraint=${AWS_DEFAULT_REGION}
+  --create-bucket-configuration LocationConstraint=${AWS_REGION}
 
 
 # dynamodb: センサーデータテーブル

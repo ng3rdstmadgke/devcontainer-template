@@ -50,14 +50,6 @@ check-tfstate-lock-id: # tfstateのロックIDを確認
 # ==============================================
 # terraform基本操作
 # ==============================================
-.PHONY: tf-validate 
-tf-validate: tf-init  ## STAGE=prod (terraform init)
-	terraform -chdir=$(TERRAFORM_DIR) validate
-
-.PHONY: tf-fmt
-tf-fmt: tf-validate ## STAGE=prod (terraform fmt)
-	terraform -chdir=$(TERRAFORM_DIR) fmt
-
 .PHONY: tf-init
 tf-init: option-parser ## STAGE=prod (terraform init)
 	terraform -chdir=$(TERRAFORM_DIR) init \
@@ -65,6 +57,14 @@ tf-init: option-parser ## STAGE=prod (terraform init)
 	  -reconfigure \
 	  -backend-config $(TF_BACKEND_CONFIG) \
 	  -backend-config "key=$(TFSTATE_S3_KEY)"
+
+.PHONY: tf-validate 
+tf-validate: tf-init  ## STAGE=prod (terraform init)
+	terraform -chdir=$(TERRAFORM_DIR) validate
+
+.PHONY: tf-fmt
+tf-fmt: tf-validate ## STAGE=prod (terraform fmt)
+	terraform -chdir=$(TERRAFORM_DIR) fmt
 
 .PHONY: tf-plan
 tf-plan: tf-validate ## STAGE=prod (terraform plan)
