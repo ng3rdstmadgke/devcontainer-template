@@ -105,3 +105,7 @@ USER vscode
 # Claude Code CLI インストール
 # https://code.claude.com/docs/en/setup#standard-installation
 RUN curl -fsSL https://claude.ai/install.sh | bash
+
+# Rust インストール
+# https://rust-lang.org/tools/install/
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
