@@ -2,6 +2,7 @@
 
 - [ローカルサービスの起動](docs/local_service.md)
 - [DevOpsガイド](docs/devops_guide.md)
+- [デプロイガイド](docs/deploy_guide.md)
 
 # devcontainerのテンプレート
 
