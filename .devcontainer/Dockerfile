@@ -109,3 +109,6 @@ RUN curl -fsSL https://claude.ai/install.sh | bash
 # Rust インストール
 # https://rust-lang.org/tools/install/
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+
+# pnpm
+RUN curl -fsSL https://get.pnpm.io/install.sh | sh -

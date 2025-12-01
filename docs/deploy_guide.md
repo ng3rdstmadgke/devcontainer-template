@@ -25,6 +25,7 @@ cd $PROJECT_DIR/terraform
 make tf-init STAGE=prod
 
 # terraform plan の実行
+# terraform/.tfplan/STAGE/plan.tfgraph が生成されます。
 make tf-plan STAGE=prod
 
 # terraform apply の実行
