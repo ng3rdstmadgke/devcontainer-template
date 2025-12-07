@@ -1,4 +1,4 @@
-# デプロイ手順
+# ■ デプロイ手順
 ## terraform の実行
 
 ### backend の設定
@@ -70,7 +70,12 @@ vim $PROJECT_DIR/k8s/overlays/$STAGE/kustomization.yaml
 kubectl apply -k $PROJECT_DIR/k8s/overlays/$STAGE
 ```
 
-# 削除手順
+
+---
+
+
+
+# ■ 削除手順
 
 ```bash
 STAGE=prod  # 環境名を指定

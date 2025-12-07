@@ -1,14 +1,10 @@
-# Postgresql
+# ■ Postgresql
 
 ```bash
 ./bin/postgresql.sh
-```
 
-## ログ
-
-```bash
-CONTAINER_NAME=${PROJECT_NAME}-sample-postgresql
-docker logs -f ${CONTAINER_NAME}
+# ログのtail
+docker logs -f ${PROJECT_NAME}-sample-postgresql
 ```
 
 ## 動作確認
@@ -20,17 +16,18 @@ CONTAINER_NAME=${PROJECT_NAME}-sample-postgresql
 PGPASSWORD=root1234 psql -U app -h ${CONTAINER_NAME} -d sample -p 5432
 ```
 
-# MySQL
+
+---
+
+
+
+# ■ MySQL
 
 ```bash
 ./bin/mysql.sh
-```
 
-## ログ
-
-```bash
-CONTAINER_NAME=${PROJECT_NAME}-sample-mysql
-docker logs -f ${CONTAINER_NAME}
+# ログのtail
+docker logs -f ${PROJECT_NAME}-sample-mysql
 ```
 
 ## 動作確認
@@ -45,17 +42,19 @@ MYSQL_PWD=root1234 mysql -u root -h ${CONTAINER_NAME} -P 3306 sample
 MYSQL_PWD=pass1234 mysql -u app -h ${CONTAINER_NAME} -P 3306 sample
 ```
 
-# Redis
+
+
+---
+
+
+
+# ■ Redis
 
 ```bash
 ./bin/redis.sh
-```
 
-## ログ
-
-```bash
-CONTAINER_NAME=${PROJECT_NAME}-sample-redis
-docker logs -f ${CONTAINER_NAME}
+# ログのtail
+docker logs -f ${PROJECT_NAME}-sample-redis
 ```
 
 ## 動作確認
@@ -131,19 +130,20 @@ sample-redis:6379> PUBLISH temp:room1 "25.5"
 
 ```
 
-# RabbitMQ
+
+
+---
+
+
+
+# ■ RabbitMQ
 
 ```bash
 ./bin/rabbitmq.sh
+
+# ログのtail
+docker logs -f ${PROJECT_NAME}-sample-rabbitmq
 ```
-
-## ログ
-
-```bash
-CONTAINER_NAME=${PROJECT_NAME}-sample-rabbitmq
-docker logs -f ${CONTAINER_NAME}
-```
-
 
 ## 動作確認
 
@@ -194,17 +194,19 @@ rabbitmqadmin \
 ```
 
 
-## Localstack
+
+---
+
+
+
+
+# ■ Localstack
 
 ```bash
 ./bin/localstack.sh
-```
 
-## ログ
-
-```bash
-CONTAINER_NAME=${PROJECT_NAME}-sample-localstack
-docker logs -f ${CONTAINER_NAME}
+# ログのtail
+docker logs -f ${PROJECT_NAME}-sample-localstack
 ```
 
 ## 動作確認
