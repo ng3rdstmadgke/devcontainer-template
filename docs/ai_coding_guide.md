@@ -130,6 +130,24 @@ claude mcp add \
       --chromeArg=--disable-dev-shm-usage
 ```
 
+## Playwrite (ブラウザ操作支援)
+
+Playwrightを使用してブラウザ操作を可能にするModel Context Protocol（MCP）サーバーです。  
+
+- [microsoft/playwright-mcp | GitHub](https://github.com/microsoft/playwright-mcp)
+
+```bash
+claude mcp add \
+  --transport stdio \
+  --scope project \
+  playwright -- \
+    npx @playwright/mcp@latest  \
+      --browser=chrome \
+      --headless \
+      --isolated \
+      --no-sandbox
+```
+
 ## DuckDuckGo
 
 https://hub.docker.com/r/mcp/duckduckgo

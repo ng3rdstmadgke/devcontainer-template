@@ -13,3 +13,4 @@ terraform/.terraform/
 .claude/
 .kiri/
 .serena/
+.playwright-mcp/
