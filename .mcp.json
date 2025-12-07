@@ -1,3 +1,55 @@
 {
-  "mcpServers": {}
+  "mcpServers": {
+    "serena": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "claude-code",
+        "--project",
+        "."
+      ],
+      "env": {}
+    },
+    "kiri": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "kiri-mcp-server@latest",
+        "--repo",
+        ".",
+        "--db",
+        ".kiri/index.duckdb",
+        "--watch"
+      ],
+      "env": {}
+    },
+    "next-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "next-devtools-mcp@latest"
+      ],
+      "env": {}
+    },
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--headless=true",
+        "--chromeArg=--no-sandbox",
+        "--chromeArg=--disable-gpu",
+        "--chromeArg=--disable-dev-shm-usage"
+      ],
+      "env": {}
+    }
+  }
 }

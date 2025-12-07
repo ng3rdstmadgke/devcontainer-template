@@ -1,4 +1,4 @@
-# GitHub CLI の ログイン
+# ■ GitHub CLI の ログイン
 
 ```bash
 gh auth login
@@ -16,8 +16,11 @@ gh auth login
 # ✓ Logged in as xxxxxxxxxxxxx
 ```
 
-# MCPサーバー
-## GitHub MCP サーバーを利用する
+---
+
+
+# ■ MCPサーバー
+## GitHub MCP
 
 ※ github cli (gh コマンド) がインストールされているのであまり必要ないが、参考までに
 
@@ -39,15 +42,15 @@ claude mcp add \
   -H "Authorization: Bearer $GITHUB_PAT"
 ```
 
-## Context7 MCP サーバーを利用する
+## Context7 (ライブラリドキュメント検索)
 
-https://github.com/upstash/context7
+- [upstash/context7 | GitHub](https://github.com/upstash/context7)
+
+Context7 MCPは、最新のバージョン別ドキュメントやコードサンプルを直接ソースから取得し、プロンプトに直接組み込む機能を提供します。
 
 ### APIキーの取得
 
 https://context7.com/dashboard でアカウント登録し、APIキーを取得する
-
-### MCPサーバーの登録
 
 
 ```bash
@@ -60,8 +63,74 @@ claude mcp add \
   --header "CONTEXT7_API_KEY: $CONTEXT7_API_KEY"
 ```
 
+## Serena (シンボルベース編集)
 
-## DuckDuckGo MCP サーバーを利用する
+- [oraios/serena | GitHub](https://github.com/oraios/serena)
+
+Serenaは、LLM/コーディングエージェントにIDEのような機能を提供するツールと考えることができます。 このツールを使用することで、エージェントはコード全体を読み込んだり、grepのような検索を行ったり、基本的な文字列置換を実行したりする必要がなくなり、適切なコード部分の特定や編集が可能になります。
+
+
+```bash
+claude mcp add \
+  --scope project \
+  --transport stdio \
+  serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context claude-code --project "."
+```
+
+## Kiri (コードベース検索)
+
+- [CAPHTECK/kiri | GitHub](https://github.com/CAPHTECH/kiri)
+
+Gitリポジトリからインテリジェントなコードコンテキストを抽出するMCPサーバーです。コードベースをDuckDBにインデックス化し、LLM向けの意味的検索ツールを提供します。
+
+```bash
+claude mcp add \
+  --scope project \
+  --transport stdio \
+  kiri -- npx -y kiri-mcp-server@latest --repo . --db .kiri/index.duckdb --watch
+```
+
+## next-devtools-mcp (Next.jsの開発支援)
+
+- [vercel/next-devtools-mcp | GitHub](https://github.com/vercel/next-devtools-mcp)
+
+
+- Next.jsの公式ドキュメントおよびナレッジベースを検索・取得
+- Playwrightブラウザ自動化ツールを使用して、Webアプリケーションのテストを自動化
+- すべての実行中のNext.js開発サーバーを発見し、ログやエラー情報にアクセス
+
+```bash
+claude mcp add \
+  --transport stdio \
+  --scope project \
+  next-devtools -- npx -y next-devtools-mcp@latest
+```
+
+## chrome-devtools-mcp (Chromeの操作支援)
+
+- [ChromeDevTools/chrome-devtools-mcp | GitHub](https://github.com/ChromeDevTools/chrome-devtools-mcp)
+
+chrome-devtools-mcp を使用すると、Gemini、Claude、Cursor、Copilot などのコーディングエージェントが ライブ状態の Chrome ブラウザを制御・検査できるようになります。  
+
+mcpサーバーの起動時に指定できるオプションはこちらを参照: https://github.com/ChromeDevTools/chrome-devtools-mcp?tab=readme-ov-file#configuration
+
+
+```bash
+# --no-sandbox: コンテナではnamespace, setuidなどが制限されているため、サンドボックス機能を無効化
+# --disable-gpu: Dockerコンテナ内ではGPUが利用できない場合が多いため、GPUアクセラレーションを無効化
+# --disable-dev-shm-usage: Docker の /dev/shm は デフォルトで 64MBであるため、共有メモリ(/dev/shm)の使用を無効化して、メモリ不足によるクラッシュを防止
+claude mcp add \
+  --transport stdio \
+  --scope project \
+  chrome-devtools-tmp -- \
+    npx -y chrome-devtools-mcp@latest \
+      --headless=true \
+      --chromeArg=--no-sandbox \
+      --chromeArg=--disable-gpu \
+      --chromeArg=--disable-dev-shm-usage
+```
+
+## DuckDuckGo
 
 https://hub.docker.com/r/mcp/duckduckgo
 
@@ -73,7 +142,7 @@ claude mcp add \
 ```
 
 
-## AWS Documentation MCP サーバーを利用する
+## AWS Documentation
 
 https://hub.docker.com/r/mcp/aws-documentation
 
@@ -84,7 +153,7 @@ claude mcp add \
   aws-documentation -- docker run -i --rm mcp/aws-documentation
 ```
 
-## AWS Terraform MCP サーバーを利用する
+## AWS Terraform
 
 https://hub.docker.com/r/mcp/aws-terraform
 
@@ -95,8 +164,10 @@ claude mcp add \
   aws-terraform -- docker run -i --rm mcp/aws-terraform
 ```
 
+---
 
-# Claude Code GitHub Actions
+
+# ■ Claude Code GitHub Actions
 
 - https://code.claude.com/docs/en/github-actions
 - https://github.com/anthropics/claude-code-action
