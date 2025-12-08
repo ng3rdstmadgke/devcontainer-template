@@ -100,6 +100,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && \
 # https://github.com/google-gemini/gemini-cli
 RUN npm install -g @google/gemini-cli
 
+# Google Chrome のインストール
 RUN wget -q  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     apt install -y ./google-chrome-stable_current_amd64.deb
 
