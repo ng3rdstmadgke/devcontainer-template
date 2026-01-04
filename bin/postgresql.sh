@@ -29,7 +29,7 @@ done
 
 
 # DockerHub: https://hub.docker.com/_/postgres
-IMAGE=postgres:16.11
+IMAGE=postgres:18
 if [ -n "$DUMP_CONF" ]; then
   docker run -i --rm \
   $IMAGE \
