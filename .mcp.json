@@ -11,7 +11,9 @@
         "--context",
         "claude-code",
         "--project",
-        "."
+        ".",
+        "--enable-web-dashboard",
+        "false"
       ],
       "env": {}
     },

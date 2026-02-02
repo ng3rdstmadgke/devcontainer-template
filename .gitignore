@@ -10,7 +10,7 @@ terraform/.terraform/
 
 # AI
 .gemini/
-.claude/
+.claude/*.local.*
 .kiri/
 .serena/
 .playwright-mcp/
