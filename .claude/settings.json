@@ -10,7 +10,6 @@
       "Bash",
       "mcp__chrome-devtools__*",
       "mcp__context7__*",
-      "mcp__kiri__*",
       "mcp__next-devtools__*",
       "mcp__playwright__*",
       "mcp__serena__*"
@@ -24,7 +23,14 @@
       "Bash(kubectl create:*)",
       "Bash(kubectl edit:*)",
       "Bash(terraform:*)",
-      "Bash(make push:*)"
+      "Bash(make:*)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(tsx:*)",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
@@ -33,8 +39,7 @@
     "chrome-devtools",
     "playwright",
     "context7",
-    "serena",
-    "kiri"
+    "serena"
   ],
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true
