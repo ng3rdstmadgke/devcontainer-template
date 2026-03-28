@@ -41,7 +41,11 @@
     "context7",
     "serena"
   ],
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true,
     "superpowers@claude-plugins-official": true
   }
 }
