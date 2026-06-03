@@ -1,0 +1,9 @@
+{
+  "folders": [
+    { "name": "📦 root",       "path": "." },
+    { "name": "🌐 app",  "path": "sample-app" },
+    { "name": "🏗️ terraform ", "path": "terraform" }
+  ],
+  "settings": {
+  }
+}
