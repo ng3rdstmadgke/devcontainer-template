@@ -87,8 +87,6 @@
         // Docs
         "hediet.vscode-drawio",
         "yzhang.markdown-all-in-one",
-        "bierner.github-markdown-preview",
-        "bierner.markdown-mermaid",
         "jebbs.plantuml",
 
         // Terraform
@@ -102,6 +100,9 @@
         "matangover.mypy",
         "charliermarsh.ruff",
         "ms-toolsai.jupyter",
+
+        // Next.js
+        "bradlc.vscode-tailwindcss",
 
         // Copilot
         "GitHub.copilot",

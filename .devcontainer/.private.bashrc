@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PATH="$PATH:$PROJECT_DIR/bin"
+
 source <(kubectl completion bash)
 source <(helm completion bash)
 source <(argocd completion bash)
@@ -8,6 +10,9 @@ complete -C '/usr/local/bin/aws_completer' aws
 # Dockerfile の terraform -install-autocomplete で.bashrcに自動的に追記されるが、備忘として明示的に残しておく
 #u https://developer.hashicorp.com/terraform/cli/commands#shell-tab-completion
 complete -C '/usr/local/bin/terraform' terraform
+
+source <(uv generate-shell-completion bash)
+source <(uvx --generate-shell-completion bash)
 
 . "$HOME/.cargo/env"
 
@@ -28,7 +33,7 @@ if [ -f "${PROJECT_DIR}/.devcontainer/.env" ]; then
 fi
 
 # pnpm
-export PNPM_HOME="/home/ktamido/.local/share/pnpm"
+export PNPM_HOME="${HOME}/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

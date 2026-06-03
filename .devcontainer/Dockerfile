@@ -87,20 +87,18 @@ RUN wget -O /usr/local/bin/rabbitmqadmin https://github.com/rabbitmq/rabbitmqadm
     chmod +x /usr/local/bin/rabbitmqadmin
 
 # uv をグローバルにインストール
-RUN curl -LsSf https://astral.sh/uv/install.sh \
-  | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh
-
-ENV UV_PROJECT_ENVIRONMENT="/workspaces/devcontainer-template/.venv"
+# https://docs.astral.sh/uv/guides/integration/docker/#installing-uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Node.js インストール
 # https://nodesource.com/products/distributions
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && \
-    apt-get install -y nodejs && \
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash - && \
+    sudo apt-get install -y nodejs && \
     node -v
 
-# Gemini CLI インストール
-# https://github.com/google-gemini/gemini-cli
-RUN npm install -g @google/gemini-cli
+# corepack を有効化して pnpm を使えるようにする (マイナーまで固定、patch は最新を許容)
+# https://github.com/nodejs/corepack
+RUN corepack enable && corepack prepare pnpm --activate
 
 # Google Chrome のインストール
 RUN wget -q  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
