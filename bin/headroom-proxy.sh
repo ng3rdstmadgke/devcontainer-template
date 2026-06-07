@@ -6,4 +6,4 @@ docker run -d \
   --network $DOCKER_NETWORK \
   ghcr.io/chopratejas/headroom:latest
 
-echo "export ANTHROPIC_BASE_URL=${PROJECT_NAME}-headroom-${HOST_USER}:8787"
+echo "ANTHROPIC_BASE_URL=${PROJECT_NAME}-headroom-${HOST_USER}:8787 claude"
